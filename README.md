@@ -1,5 +1,5 @@
 # ScriptableRenderPipeline
-**Unity 2018.1.0f2 ScriptableRenderPipeline **<BR/>
+**Unity 2018.1.0f2 ScriptableRenderPipeline**<BR/>
 It can't express point light in LWRP.<BR/>
 test:<BR/>
 1. new scene<BR/>
