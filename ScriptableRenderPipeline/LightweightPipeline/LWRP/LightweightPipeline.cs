@@ -714,10 +714,13 @@ namespace UnityEngine.Experimental.Rendering.LightweightPipeline
                 for (int i = 0; i < visibleLights.Count; ++i)
                 {
                     VisibleLight light = visibleLights[i];
-                    if (light.lightType == LightType.Directional)
-                        perObjectLightIndexMap[i] = -1;
-                    else
-                        perObjectLightIndexMap[i] -= directionalLightCount;
+					if( light.lightType == LightType.Directional )
+					{
+						perObjectLightIndexMap[i] = -1;
+						directionalLightCount += 1;
+					}
+					else
+						perObjectLightIndexMap[i] -= directionalLightCount;
                 }
                 m_CullResults.SetLightIndexMap(perObjectLightIndexMap);
 
