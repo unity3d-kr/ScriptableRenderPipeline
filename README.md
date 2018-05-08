@@ -8,7 +8,7 @@ test:<BR/>
 4. add one more point light -> expression.<BR/>
 <BR/>
 So, I fix it.<BR/>
-Download copy to ScriptableRenderPipeline/ScriptableRenderPipeline/LightweightPipeline/LWRP/LightweightPipeline.cs<BR/>
+Download and copy to ScriptableRenderPipeline/ScriptableRenderPipeline/LightweightPipeline/LWRP/LightweightPipeline.cs<BR/>
 Original:<BR/>
 https://github.com/Unity-Technologies/ScriptableRenderPipeline/blob/2018.1.0f2/ScriptableRenderPipeline/LightweightPipeline/LWRP/LightweightPipeline.cs
 <BR/>
