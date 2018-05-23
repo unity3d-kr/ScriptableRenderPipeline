@@ -91,8 +91,9 @@ Texture2D<float>   depthTex;
 uniform uint4	srcRect; // .xy = offset, .zw = width/height
 uniform uint4	dstRect; // .xy = offset, .z  = array slice , .w = Flags: 1 := 16bpp, 2 := 2 channels pp, 4:= reversed z
 
-uniform float4  blurWeightsStorage[3]; // Unity expects float arrays to be tightly packed
-static float    blurWeights[12] = (float[12])blurWeightsStorage;
+//uniform float4  blurWeightsStorage[3]; // Unity expects float arrays to be tightly packed
+//static float    blurWeights[12] = (float[12])blurWeightsStorage;
+uniform float    blurWeightsStorage[12];    // If tightly packed, it has shader error 'All kernels must use same constant buffer layouts'
 
 static const int kBits_16	 = 1; // 16 bits per channel
 static const int kChannels_2 = 2; // 2 channels per pixel
@@ -273,7 +274,7 @@ void KERNEL_MAIN( uint3 dispatchId : SV_DispatchThreadID, uint3 groupThreadId : 
 		UNITY_LOOP
 		for( int blurOffset = -blurBorder; blurOffset <= blurBorder; blurOffset++ )
 		{
-			hblurredMoments[ih] += readFromShared( int2( idx.x + blurOffset, idx.y ), LDS_STRIDE ) * blurWeights[abs( blurOffset )];
+			hblurredMoments[ih] += readFromShared( int2( idx.x + blurOffset, idx.y ), LDS_STRIDE ) * blurWeightsStorage[abs( blurOffset )];
 		}
 
 		GroupMemoryBarrierWithGroupSync();
@@ -298,7 +299,7 @@ void KERNEL_MAIN( uint3 dispatchId : SV_DispatchThreadID, uint3 groupThreadId : 
 	UNITY_UNROLL
 	for( int blurOffset = -blurBorder; blurOffset <= blurBorder; blurOffset++ )
 	{
-		vblurredMoment += readFromShared( int2( ldsIdx.x, ldsIdx.y + blurOffset ), THREADS ) * blurWeights[abs(blurOffset)];
+		vblurredMoment += readFromShared( int2( ldsIdx.x, ldsIdx.y + blurOffset ), THREADS ) * blurWeightsStorage[abs(blurOffset)];
 	}
 
 	// and write out the result
