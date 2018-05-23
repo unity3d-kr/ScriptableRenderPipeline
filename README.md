@@ -6,7 +6,7 @@
 If you have this bug, You can download fixed version here.<BR/>
  > Shader error in 'ShadowBlurMoments.compute': All kernels must use same constant buffer layouts; 'blurWeightsStorage' property found to be different
 - Test<BR/>
- Switch platform to Android.<BR/>
+ Switch platform to Android<BR/>
 <BR/>
 - Download<BR/>
 /ScriptableRenderPipeline/Core/CoreRP/Shadow/ShadowBlurMoments.compute<BR/>
@@ -16,8 +16,9 @@ https://github.com/Unity-Technologies/ScriptableRenderPipeline/blob/master/Scrip
 <BR/>
 
 ### Point light
-First point light is not working in Unity 2018.1.0f2 Lightweight RenderPipeline. It was fixed in Master Version.<BR/>
-I fix for SRP 2018.1.0f2 (https://github.com/Unity-Technologies/ScriptableRenderPipeline/tree/2018.1.0f2)<BR/>
+First point light is not working in Script Renderpipeline Tag: 2018.1.0f2.<BR/>
+It was fixed in master version (https://github.com/Unity-Technologies/ScriptableRenderPipeline/pull/1216).<BR/>
+If you download Tag 2018.1.0f2 (https://github.com/Unity-Technologies/ScriptableRenderPipeline/tree/2018.1.0f2), download it only.<BR/>
 - Test<BR/>
  1. new scene<BR/>
  1. add sphere(or other primitive), set LightweightShader.shader<BR/>
